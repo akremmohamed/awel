@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!--
+    Fast, Beautiful Portfolio — single-file build (no external libraries)
+    - Zero render‑blocking fonts (system font stack)
+    - Minified, scoped CSS
+    - Lazy images + decoding="async"
+    - Accessible, semantic structure
+    - Smooth theme with CSS variables & subtle motion (respects reduced motion)
+  -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Awel Mohamed Oumer — Portfolio</title>
+  <meta name="description" content="Awel Mohamed Oumer — IT Graduate, Web & App Developer. Projects, skills, contact, and CV." />
+  <link rel="preload" as="image" href="image/Abol Mohammed.jpg"/>
+  <link rel="icon" href="image/Abol Mohammed.jpg" type="image/jpeg"/>
+  <meta property="og:title" content="Awel Mohamed Oumer — Portfolio"/>
+  <meta property="og:description" content="Web & App Developer — projects, skills, contact, and CV."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:image" content="image/Abol Mohammed.jpg"/>
+  <style>
+    /* ======= Base / Reset (tiny) ======= */
+    :root{--bg:#0b0f14;--card:#0f1620aa;--cardSolid:#121a25;--fg:#e7ecf3;--muted:#a7b2c3;--brand:#66e0d9;--brand2:#7aa3ff;--ring:0 10px 30px rgba(0,0,0,.4);}*{box-sizing:border-box}html,body{height:100%}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(1200px 700px at 10% -10%,#19314555,transparent),radial-gradient(1200px 700px at 110% 0%,#1a2b5055,transparent),var(--bg);color:var(--fg);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Inter,Arial,sans-serif;-webkit-font-smoothing:antialiased;}
+    a{color:inherit;text-decoration:none}img{display:block;max-width:100%;}
+    .container{width:min(1100px,92%);margin-inline:auto}
+    .btn{display:inline-flex;gap:.5rem;align-items:center;border:1px solid #2a3a50;background:linear-gradient(180deg,#182230,#121a25);padding:.7rem 1rem;border-radius:14px;color:#e9f1ff;box-shadow:inset 0 1px 0 #2d3c50;transition:.2s transform,.2s border-color}
+    .btn:hover{transform:translateY(-1px);border-color:#3b5375}
+    .btn.primary{background:linear-gradient(180deg, #22b8b2, #208b86);border-color:#22b8b2;color:#041316}
+    .btn.ghost{background:transparent}
+    .tag{display:inline-block;background:#182230;border:1px solid #26364a;padding:.15rem .5rem;border-radius:999px;color:#cfe2ff;font-size:.8rem}
+    .muted{color:var(--muted)}
+
+    /* ======= Header / Nav ======= */
+    .site-header{position:sticky;top:0;z-index:50;background:linear-gradient(180deg,rgba(11,15,20,.9),rgba(11,15,20,.6) 60%,transparent);backdrop-filter:saturate(1.2) blur(10px)}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+    .brand{font-weight:700;letter-spacing:.2px;background:linear-gradient(90deg,var(--brand),var(--brand2));-webkit-background-clip:text;background-clip:text;color:transparent;font-size:1.05rem}
+    .nav-links{display:flex;gap:.6rem}
+    .nav-links a{padding:.5rem .7rem;border-radius:10px}
+    .nav-links a:hover{background:#17202c}
+    .nav-toggle{display:none}
+    @media (max-width: 820px){
+      .nav-links{position:fixed;inset:56px 0 auto 0;background:#0b0f14;display:none;flex-direction:column;padding:12px;border-top:1px solid #1a2737}
+      .nav-links.open{display:flex}
+      .nav-toggle{display:inline-flex;gap:.5rem;align-items:center;border:1px solid #243448;background:#111926;padding:.5rem .7rem;border-radius:10px;color:#d7e3f7}
+    }
+
+    /* ======= Hero ======= */
+    .hero{display:grid;grid-template-columns:1.25fr .9fr;gap:28px;align-items:center;padding:40px 0 14px}
+    .hero h1{font-size:clamp(1.8rem,2.4vw,2.6rem);line-height:1.2;margin:.2rem 0 .6rem}
+    .subtitle{color:#c5d4ea}
+    .lead{color:#b8c6da}
+    .photo-ring{--s:230px;width:var(--s);height:var(--s);border-radius:50%;padding:6px;background:conic-gradient(from 220deg,var(--brand),#ffffff22 30%,var(--brand2));box-shadow:var(--ring);}
+    .photo-ring img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+    .social-inline{display:flex;gap:.6rem;margin-top:8px}
+    .social-inline a{display:grid;place-items:center;width:38px;height:38px;border-radius:11px;border:1px solid #203045;background:#121a25}
+    .quick-contact{list-style:none;padding:0;margin:12px 0 0;display:grid;gap:6px}
+    .quick-contact a{margin-left:.4rem;color:#cfe2ff}
+    @media (max-width: 980px){.hero{grid-template-columns:1fr;}}
+
+    /* ======= Sections ======= */
+    .section{padding:40px 0}
+    .section h2{font-size:clamp(1.4rem,2vw,1.8rem);margin:0 0 12px}
+    .two-col{display:grid;grid-template-columns:1.2fr .8fr;gap:20px}
+    @media (max-width: 900px){.two-col{grid-template-columns:1fr}}
+    .card{background:var(--card);border:1px solid #1a2737;border-radius:18px;padding:16px;box-shadow:var(--ring)}
+    .cards{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
+    .cards>.span-6{grid-column:span 6}
+    .cards>.span-4{grid-column:span 4}
+    @media (max-width:960px){.cards{grid-template-columns:1fr}.cards>*{grid-column:auto}}
+
+    /* ======= Skills ======= */
+    .skills{display:grid;gap:10px}
+    .skill{background:var(--card);border:1px solid #1a2737;border-radius:14px;padding:10px}
+    .skill .head{display:flex;justify-content:space-between;color:#cfe2ff}
+    .bar{height:8px;background:#17202c;border-radius:99px;overflow:hidden}
+    .bar>i{display:block;height:100%;background:linear-gradient(90deg,var(--brand),var(--brand2))}
+
+    /* ======= Projects ======= */
+    .projects{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
+    .project{grid-column:span 6;background:var(--cardSolid);border:1px solid #1a2737;border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
+    .project img{aspect-ratio:16/9;object-fit:cover}
+    .project .body{padding:12px}
+    .project .actions{display:flex;gap:8px;flex-wrap:wrap;padding:0 12px 14px}
+    @media (max-width: 900px){.project{grid-column:1/-1}}
+
+    /* ======= Timeline ======= */
+    .timeline{display:grid;gap:10px}
+    .timeline-item{display:grid;grid-template-columns:90px 1fr;gap:12px;align-items:start}
+    .timeline .time{color:#b3c0d4}
+
+    /* ======= Contact ======= */
+    .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    @media (max-width:880px){.contact-grid{grid-template-columns:1fr}}
+    .contact-list a{display:flex;gap:.6rem;align-items:center;padding:.5rem;border-radius:10px;border:1px solid #1a2737;background:#0f1620}
+    .contact-form{display:grid;gap:10px}
+    .contact-form label{display:grid;gap:6px}
+    .contact-form input,.contact-form textarea{background:#0e1520;border:1px solid #1a2737;border-radius:12px;padding:.75rem;color:#e6f0ff}
+    .form-actions{display:flex;gap:8px;flex-wrap:wrap}
+
+    /* ======= Footer & Quick bar ======= */
+    .site-footer{border-top:1px solid #1a2737}
+    .quick-bar{position:fixed;right:14px;bottom:14px;display:flex;flex-direction:column;gap:8px}
+    .quick-bar a{width:44px;height:44px;display:grid;place-items:center;border-radius:12px;background:#121a25;border:1px solid #1a2737}
+
+    /* ======= Modal (Gallery) ======= */
+    .overlay{position:fixed;inset:0;background:rgba(0,0,0,.85);display:grid;place-items:center;z-index:60}
+    .modal{width:min(860px,94vw);background:#0f1620;border:1px solid #1a2737;border-radius:16px;box-shadow:var(--ring);padding:12px}
+    .modal img{max-height:min(70vh,700px);margin:auto;border-radius:12px}
+    .modal .row{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:6px 0 10px}
+    .modal .nav{display:flex;gap:8px}
+
+    /* ======= Motion safety ======= */
+    @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav container" aria-label="Primary">
+      <a class="brand" href="#home">Awel Mohamed</a>
+      <button class="nav-toggle" id="navToggle" aria-controls="navLinks" aria-expanded="false">Menu ▾</button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#technical">Technical</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="home" class="container hero" aria-label="Introduction">
+    <section>
+      <h1>Building Digital Experiences That Matter</h1>
+      <p class="subtitle">BSc. Information Technology — Web & App Developer</p>
+      <p class="lead">Recent IT graduate with hands‑on experience building web & desktop systems. Practical, adaptable, and ready to deliver value.</p>
+      <p class="lead">I focus on clean, efficient, user‑friendly solutions across web and mobile.</p>
+      <div class="actions">
+        <a class="btn primary" href="development Cv.pdf" download target="_blank" rel="noopener">Download CV
+          <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3v10.59l3.3-3.3 1.4 1.42-5 5-5-5 1.4-1.42 3.3 3.3V3h1.6zM5 19h14v2H5z"/></svg>
+        </a>
+        <a class="btn ghost" href="#contact">Contact</a>
+      </div>
+      <div class="social-inline" aria-label="Social links">
+        <a href="https://t.me/clicktechs" target="_blank" rel="noopener" title="Telegram" aria-label="Telegram">
+          <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M9.04 15.04 8.71 19s.61.12.75-.32l1.8-3.52 4.18 3.1c.77.43 1.33.21 1.53-.71l2.77-13.01c.25-1.21-.46-1.69-1.21-1.39L2.7 9.77c-1.18.46-1.16 1.13-.2 1.41l4.9 1.53 11.37-7.18c.54-.33 1.03-.15.62.2z"/></svg>
+        </a>
+        <a href="mailto:Akremmohamed1993@gmail.com" title="Email" aria-label="Email">
+          <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        </a>
+        <a href="tel:0917578903" title="Phone" aria-label="Phone">
+          <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.05 15.05 0 006.6 6.6l2.2-2.2c.3-.3.7-.4 1.1-.3 1.2.4 2.6.6 4 .6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C11.8 21 3 12.2 3 2c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.4.2 2.8.6 4 .1.4 0 .8-.3 1.1l-2.2 2.2z"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/awel-mohamed" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn">
+          <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.94 6.5A1.94 1.94 0 105 4.56 1.94 1.94 0 006.94 6.5zM5.5 20.5h3v-10h-3v10zM13 10.5v10h3v-5.86c0-3.1 4-3.35 4 0V20.5h3v-6.59c0-5.45-5.89-5.25-7-2.57v-1.34h-3z"/></svg>
+        </a>
+      </div>
+    </section>
+
+    <aside>
+      <div class="photo-ring" aria-hidden="true">
+        <img src="image/Abol Mohammed.jpg" alt="Portrait of Awel Mohamed" loading="eager" decoding="async"/>
+      </div>
+      <ul class="quick-contact" aria-label="Quick contact">
+        <li><strong>Phone</strong><a href="tel:0917578903">09-17-57-89-03</a></li>
+        <li><strong>Email</strong><a href="mailto:Akremmohamed1993@gmail.com">Akremmohamed1993@gmail.com</a></li>
+        <li><strong>TG</strong><a href="https://t.me/clicktechs" target="_blank" rel="noopener">@clicktechs</a></li>
+        <li><strong>Location</strong><span>Addis Ababa, Ethiopia</span></li>
+      </ul>
+    </aside>
+  </main>
+
+  <!-- About -->
+  <section id="about" class="section container">
+    <div class="two-col">
+      <div class="card">
+        <h2>About Me</h2>
+        <p>I am a recent IT graduate from Ambo University with a solid foundation in programming, system development, and troubleshooting. Adaptable, hardworking, and eager to grow in a professional tech environment.</p>
+        <p class="muted">I build practical systems: student management, travel guides, drugstore management, and local job portals. I work with HTML, CSS, JavaScript, PHP, Java, C#, and React.</p>
+        <div class="cards">
+          <div class="card span-4"><strong>University</strong><br><span class="muted">Ambo University (2019–2024)</span></div>
+          <div class="card span-4"><strong>Final Project</strong><br><span class="muted">Drugstore Management System</span></div>
+          <div class="card span-4"><strong>Availability</strong><br><span class="muted">Open to opportunities</span></div>
+        </div>
+      </div>
+      <aside class="card">
+        <h3>Hobbies</h3>
+        <ul>
+          <li>📚 Reading</li>
+          <li>🕌 Mosque Activities</li>
+          <li>💻 Coding</li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills" class="section container">
+    <h2>Skills</h2>
+    <div class="skills">
+      <div class="skill"><div class="head"><span>HTML & CSS</span><span>100%</span></div><div class="bar"><i style="width:100%"></i></div></div>
+      <div class="skill"><div class="head"><span>JavaScript</span><span>85%</span></div><div class="bar"><i style="width:85%"></i></div></div>
+      <div class="skill"><div class="head"><span>PHP & MySQL</span><span>100%</span></div><div class="bar"><i style="width:100%"></i></div></div>
+      <div class="skill"><div class="head"><span>React</span><span>70%</span></div><div class="bar"><i style="width:70%"></i></div></div>
+      <div class="skill"><div class="head"><span>Python / Node.js</span><span>70%</span></div><div class="bar"><i style="width:70%"></i></div></div>
+      <div class="skill"><div class="head"><span>Desktop / C# / Java</span><span>65%</span></div><div class="bar"><i style="width:65%"></i></div></div>
+    </div>
+  </section>
+
+  <!-- Technical -->
+  <section id="technical" class="section container">
+    <h2>Technical Skills</h2>
+    <div class="cards">
+      <div class="card span-6"><h3>Front-End</h3><p>HTML5, CSS3, JavaScript (ES6+), Responsive Design</p></div>
+      <div class="card span-6"><h3>Back-End</h3><p>PHP, Java, C#, REST API Development</p></div>
+      <div class="card span-6"><h3>Database</h3><p>MySQL, PostgreSQL, MongoDB, CRUD, Data Modeling</p></div>
+      <div class="card span-6"><h3>Tools & Others</h3><p>Git & GitHub, VS Code/IDEs, Hosting & Deployment</p></div>
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section id="experience" class="section container">
+    <h2>Professional Experience</h2>
+    <div class="timeline">
+      <div class="timeline-item card"><div class="time">2023</div><div class="info"><h4>Intern — Wollo University Data Center</h4><p>Assisted with server setup, maintenance, troubleshooting, and networking tasks.</p></div></div>
+      <div class="timeline-item card"><div class="time">2023</div><div class="info"><h4>Trainee — Wollo University App Factory</h4><p>Built small applications, contributed to team projects, and joined code reviews.</p></div></div>
+      <div class="timeline-item card"><div class="time">2023</div><div class="info"><h4>Team Trainee — Ambo University Data Center</h4><p>Worked on IT infrastructure, deployments, and user support.</p></div></div>
+    </div>
+  </section>
+
+   <!-- Projects -->
+  <section id="projects" class="section container">
+    <h2>Selected Projects</h2>
+    <div class="projects">
+      <article class="project">
+        <img src="image/p/login.png" alt="Drugstore Management System login screen" loading="lazy" decoding="async"/>
+        <div class="body">
+          <h3>Drugstore Management System</h3>
+          <p>Inventory and sales management for Annaiya Pharmacy with stock control and reports.</p>
+          <div class="actions">
+            <span class="tag">PHP</span><span class="tag">MySQL</span>
+            <button class="btn ghost view" data-title="Drugstore Management System" data-desc="Inventory and sales management with stock control and detailed reports." data-images='["image/p/login.png","image/p/2.png","image/p/3.png","image/p/4.png","image/p/5.png","image/p/6.png","image/p/7.png","image/p/8.png","image/p/9.png","image/p/10.png","image/p/11.png","image/p/12.png","image/p/13.png","image/p/14.png","image/p/15.png","image/p/16.png","image/p/17.png","image/p/18.png","image/p/19.png","image/p/20.png","image/p/21.png","image/p/22.png","image/p/23.png"]'>View</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="project">
+        <img src="image/A.png" alt="Local Job Portal dashboard preview" loading="lazy" decoding="async"/>
+        <div class="body">
+          <h3>Local Job Portal</h3>
+          <p>Final freelance project connecting local job seekers with employers.</p>
+          <div class="actions">
+            <span class="tag">Full‑stack</span><span class="tag">Freelance</span>
+            <button class="btn ghost view" data-title="Local Job Portal" data-desc="A portal to connect local job seekers with employers." data-images='["image/A.png","image/E.png","image/e1.png","image/e2.png","image/1.png","image/2.png","image/3.png","image/c.png","image/c1.png"]'>View</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="project">
+        <img src="image/school.PNG" alt="Student Management & Grading System screenshot" loading="lazy" decoding="async"/>
+        <div class="body">
+          <h3>Student Management & Grading System</h3>
+          <p>Records students and grades; generates reports for Akesta Secondary School.</p>
+          <div class="actions">
+            <span class="tag">PHP</span><span class="tag">MySQL</span><span class="tag">Bootstrap</span>
+            <button class="btn ghost view" data-title="Student Management & Grading System" data-desc="Records students, grades, and exports reports." data-images='["image/school.PNG"]'>View</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="project">
+        <img src="image/attention.png" alt="Travel Guide Application screens" loading="lazy" decoding="async"/>
+        <div class="body">
+          <h3>Travel Guide Application</h3>
+          <p>Mobile‑first local tourism guide with places, maps, and tips.</p>
+          <div class="actions">
+            <span class="tag">React</span><span class="tag">Node.js</span>
+            <button class="btn ghost view" data-title="Travel Guide Application" data-desc="Local tourism guide with curated places and maps." data-images='["image/attention.png"]'>View</button>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section id="education" class="section container">
+    <h2>Education & Certificates</h2>
+    <div class="cards">
+      <div class="card span-6"><h3>BSc. Information Technology</h3><p>Ambo University (2019–2024)</p></div>
+      <div class="card span-6"><h3>Akesta Higher Education Preparatory School</h3><p>(2016–2019)</p></div>
+      <div class="card span-6"><h3>Bruhtesfa Primary School</h3><p>(2008–2016)</p></div>
+      <div class="card span-6"><h3>Certificates & Awards</h3><ul><li>Ambo University Peace Forum (2021–2023) — recognized for service</li><li>People for People Association — volunteer & community projects</li></ul></div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="section container">
+    <h2>Contact</h2>
+    <div class="contact-grid">
+      <div class="card">
+        <h3>Get in touch</h3>
+        <p class="muted">Open to full‑time roles, internships, and freelance projects. I reply quickly.</p>
+        <div class="contact-list">
+          <a href="https://t.me/clicktechs" target="_blank" rel="noopener">Click Goto Telegram </a>
+          <a href="mailto:Akremmohamed1993@gmail.com">Click Goto Email</a>
+          <a href="tel:0917578903">09‑17‑57‑89‑03</a>
+          <a href="https://www.linkedin.com/in/awel-mohamed" target="_blank" rel="noopener">Click Goto LinkedIn</a>
+        </div>
+      </div>
+      <form class="card contact-form" action="#" onsubmit="alert('Thank you! Please reach me on Telegram: @clicktechs'); return false;">
+        <label><span>Your name</span><input name="name" type="text" required placeholder="Your name" autocomplete="name"/></label>
+        <label><span>Your email</span><input name="email" type="email" required placeholder="you@example.com" autocomplete="email"/></label>
+        <label><span>Message</span><textarea name="message" rows="5" required placeholder="Short message..."></textarea></label>
+        <div class="form-actions"><button class="btn primary" type="submit">Send message</button><a class="btn ghost" href="development Cv.pdf" download target="_blank" rel="noopener">Download CV</a></div>
+      </form>
+    </div>
+  </section>
+
+  <footer class="section site-footer">
+    <div class="container"><small>&copy; 2025 Awel Mohamed Oumer — Built with ♥︎ • <a href="development Cv.pdf" download>Download CV</a></small></div>
+  </footer>
+
+  <!-- Quick Bar -->
+  <div class="quick-bar" aria-hidden="false">
+    <a href="https://t.me/clicktechs" target="_blank" rel="noopener" title="Telegram" aria-label="Telegram">TG</a>
+    <a href="mailto:Akremmohamed1993@gmail.com" title="Email" aria-label="Email">@</a>
+    <a href="tel:0917578903" title="Phone" aria-label="Phone">☎</a>
+  </div>
+
+  <!-- Lightweight JS (defer) -->
+  <script defer>
+    // Nav toggle
+    const navToggle=document.getElementById('navToggle');
+    const navLinks=document.getElementById('navLinks');
+    if(navToggle){navToggle.addEventListener('click',()=>{const open=navLinks.classList.toggle('open');navToggle.setAttribute('aria-expanded',open)})}
+
+    // Modal Gallery (accessible, tiny)
+    const makeEl=(tag,cls)=>{const el=document.createElement(tag);if(cls)el.className=cls;return el};
+    const closeOnOutside=(overlay,box)=>overlay.addEventListener('click',e=>{if(!box.contains(e.target))overlay.remove()});
+    const views=document.querySelectorAll('.view');
+    views.forEach(btn=>btn.addEventListener('click',()=>{
+      const title=btn.dataset.title||'Project';
+      const desc=btn.dataset.desc||'';
+      const images=JSON.parse(btn.dataset.images||'[]');
+      let i=0;
+      const overlay=makeEl('div','overlay');
+      const modal=makeEl('div','modal');
+      const row=makeEl('div','row');
+      const h=makeEl('h3');h.textContent=title;
+      const nav=makeEl('div','nav');
+      const prev=makeEl('button','btn ghost');prev.textContent='◀ Prev';
+      const next=makeEl('button','btn ghost');next.textContent='Next ▶';
+      const close=makeEl('button','btn');close.textContent='✕ Close';
+      const img=makeEl('img');img.loading='eager';img.decoding='async';
+      const p=makeEl('p');p.textContent=desc;
+      row.append(h,nav,close);nav.append(prev,next);modal.append(row,img,p);overlay.append(modal);document.body.append(overlay);
+      const render=()=>{img.src=images[i];img.alt=`${title} — image ${i+1}/${images.length}`;prev.disabled=i===0;next.disabled=i===images.length-1};
+      render();
+      prev.onclick=()=>{if(i>0){i--;render()}};next.onclick=()=>{if(i<images.length-1){i++;render()}};close.onclick=()=>overlay.remove();
+      document.addEventListener('keydown',function onKey(e){if(e.key==='Escape'){overlay.remove();document.removeEventListener('keydown',onKey)}else if(e.key==='ArrowLeft'&&i>0){i--;render()}else if(e.key==='ArrowRight'&&i<images.length-1){i++;render()}});
+      closeOnOutside(overlay,modal);
+    }));
+
+    // Tiny fade‑in on scroll using IntersectionObserver (no library)
+    const io=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.style.transition='opacity .5s ease, transform .5s ease';e.target.style.opacity=1;e.target.style.transform='none';io.unobserve(e.target)}})},{threshold:.08});
+    document.querySelectorAll('.card,.project,.skill,.timeline-item').forEach(el=>{el.style.opacity=.001;el.style.transform='translateY(8px)';io.observe(el)});
+  </script>
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">{
+    "@context":"https://schema.org","@type":"Person","name":"Awel Mohamed Oumer","jobTitle":"Web & App Developer","image":"image/Abol Mohammed.jpg","address":{"@type":"PostalAddress","addressLocality":"Addis Ababa","addressCountry":"Ethiopia"},"email":"mailto:Akremmohamed1993@gmail.com","url":"","sameAs":["https://t.me/clicktechs","https://www.linkedin.com/in/awel-mohamed"]}
+  </script>
+</body>
+</html>
+
+
+
+
+
+
