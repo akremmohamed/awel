@@ -425,6 +425,86 @@
     }
     .modal .nav{display:flex;gap:8px}
 
+    /* ======= Education Timeline ======= */
+    .education-timeline {
+      display: grid;
+      gap: 16px;
+      position: relative;
+    }
+    .education-timeline::before {
+      content: '';
+      position: absolute;
+      left: 20px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--brand), var(--brand2));
+      border-radius: 2px;
+    }
+    .education-item {
+      display: grid;
+      grid-template-columns: 40px 1fr;
+      gap: 16px;
+      align-items: start;
+    }
+    .education-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--brand), var(--brand2));
+      display: grid;
+      place-items: center;
+      color: #041316;
+      font-weight: bold;
+      z-index: 1;
+    }
+    .education-content {
+      background: var(--cardSolid);
+      border: 1px solid #1a2737;
+      border-radius: 12px;
+      padding: 16px;
+    }
+
+    /* ======= Project Demo Features ======= */
+    .demo-buttons {
+      display: flex;
+      gap: 8px;
+      margin-top: 12px;
+    }
+    .demo-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      background: #182230;
+      border: 1px solid #26364a;
+      border-radius: 8px;
+      color: #cfe2ff;
+      font-size: 0.85rem;
+      transition: all 0.2s;
+    }
+    .demo-btn:hover {
+      background: #1e2c40;
+      transform: translateY(-2px);
+    }
+    .demo-btn.live {
+      background: linear-gradient(135deg, #22b8b2, #208b86);
+      color: #041316;
+    }
+
+    /* ======= Contact Map ======= */
+    .contact-map {
+      height: 200px;
+      background: #0e1520;
+      border: 1px solid #1a2737;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-top: 16px;
+      display: grid;
+      place-items: center;
+      color: var(--muted);
+    }
+
     /* ======= Motion safety ======= */
     @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
   </style>
@@ -586,6 +666,20 @@
               <button class="btn ghost view" data-title="Drugstore Management System" data-desc="A comprehensive inventory and sales management solution with real-time stock tracking, sales reporting, and supplier management." data-images='["image/p/login.png","image/p/2.png","image/p/3.png","image/p/4.png","image/p/5.png","image/p/6.png","image/p/7.png","image/p/8.png","image/p/9.png","image/p/10.png","image/p/11.png","image/p/12.png","image/p/13.png","image/p/14.png","image/p/15.png","image/p/16.png","image/p/17.png","image/p/18.png","image/p/19.png","image/p/20.png","image/p/21.png","image/p/22.png","image/p/23.png"]'>View Details</button>
             </div>
           </div>
+          <div class="demo-buttons">
+            <a href="#" class="demo-btn live">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 16.5v-9l6 4.5-6 4.5z"/>
+              </svg>
+              Live Demo
+            </a>
+            <a href="#" class="demo-btn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/>
+              </svg>
+              Source Code
+            </a>
+          </div>
         </div>
       </article>
 
@@ -603,6 +697,20 @@
             <div class="project-links">
               <button class="btn ghost view" data-title="Local Job Portal" data-desc="A full-stack web application connecting local job seekers with employers, featuring user registration, job posting, and application tracking." data-images='["image/A.png","image/E.png","image/e1.png","image/e2.png","image/1.png","image/2.png","image/3.png","image/c.png","image/c1.png"]'>View Details</button>
             </div>
+          </div>
+          <div class="demo-buttons">
+            <a href="#" class="demo-btn live">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 16.5v-9l6 4.5-6 4.5z"/>
+              </svg>
+              Live Demo
+            </a>
+            <a href="#" class="demo-btn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/>
+              </svg>
+              Source Code
+            </a>
           </div>
         </div>
       </article>
@@ -622,6 +730,20 @@
               <button class="btn ghost view" data-title="Student Management & Grading System" data-desc="A system for managing student records, course registration, grade entry, and report generation for educational institutions." data-images='["image/school.PNG"]'>View Details</button>
             </div>
           </div>
+          <div class="demo-buttons">
+            <a href="#" class="demo-btn live">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 16.5v-9l6 4.5-6 4.5z"/>
+              </svg>
+              Live Demo
+            </a>
+            <a href="#" class="demo-btn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/>
+              </svg>
+              Source Code
+            </a>
+          </div>
         </div>
       </article>
 
@@ -639,6 +761,20 @@
             <div class="project-links">
               <button class="btn ghost view" data-title="Travel Guide Application" data-desc="A mobile-first application showcasing local tourism destinations with information on attractions, travel tips, and interactive maps." data-images='["image/attention.png"]'>View Details</button>
             </div>
+          </div>
+          <div class="demo-buttons">
+            <a href="#" class="demo-btn live">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 16.5v-9l6 4.5-6 4.5z"/>
+              </svg>
+              Live Demo
+            </a>
+            <a href="#" class="demo-btn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/>
+              </svg>
+              Source Code
+            </a>
           </div>
         </div>
       </article>
@@ -667,4 +803,209 @@
           <h4>Software Development Trainee — Wollo University App Factory</h4>
           <p>Built small applications, contributed to team projects, and participated in code reviews. Developed practical skills in software development methodologies and collaboration.</p>
           <ul>
-            <li>Develop
+            <li>Developed small applications using modern web technologies</li>
+            <li>Participated in team code reviews and collaborative development</li>
+            <li>Gained experience with agile development practices</li>
+          </ul>
+        </div>
+      </div>
+      <div class="timeline-item card">
+        <div class="time">2023</div>
+        <div class="info">
+          <h4>Team Trainee — Ambo University Data Center</h4>
+          <p>Worked on IT infrastructure, deployments, and user support. Enhanced technical skills in system administration and user assistance.</p>
+          <ul>
+            <li>Assisted with IT infrastructure maintenance and deployments</li>
+            <li>Provided user support and troubleshooting assistance</li>
+            <li>Participated in system monitoring and maintenance tasks</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section id="education" class="section container">
+    <h2>Education & Certificates</h2>
+    <div class="education-timeline">
+      <div class="education-item">
+        <div class="education-icon">BSc</div>
+        <div class="education-content">
+          <h3>BSc. Information Technology</h3>
+          <p class="muted">Ambo University (2019–2024)</p>
+          <p>Comprehensive study of information systems, software development, database management, and networking. Graduated with a strong foundation in both theoretical concepts and practical applications.</p>
+          <p><strong>Key Courses:</strong> Web Development, Database Systems, Software Engineering, Network Administration, Mobile Application Development</p>
+        </div>
+      </div>
+      
+      <div class="education-item">
+        <div class="education-icon">HS</div>
+        <div class="education-content">
+          <h3>Akesta Higher Education Preparatory School</h3>
+          <p class="muted">(2016–2019)</p>
+          <p>Completed preparatory education with focus on natural sciences, laying the foundation for university studies in technology and computer science.</p>
+        </div>
+      </div>
+      
+      <div class="education-item">
+        <div class="education-icon">PS</div>
+        <div class="education-content">
+          <h3>Bruhtesfa Primary School</h3>
+          <p class="muted">(2008–2016)</p>
+          <p>Completed primary education with distinction in mathematics and science subjects.</p>
+        </div>
+      </div>
+      
+      <div class="education-item">
+        <div class="education-icon">C</div>
+        <div class="education-content">
+          <h3>Certificates & Awards</h3>
+          <ul>
+            <li>Ambo University Peace Forum (2021–2023) — recognized for service and leadership in campus community initiatives</li>
+            <li>People for People Association — volunteer & community projects focused on technology education for youth</li>
+            <li>University Programming Competition Participant (2022) — competed in regional coding challenges</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="section container">
+    <h2>Contact</h2>
+    <div class="contact-grid">
+      <div class="card">
+        <h3>Get in touch</h3>
+        <p class="muted">Open to full‑time roles, internships, and freelance projects. I reply quickly to all inquiries.</p>
+        <div class="contact-list">
+          <a href="https://t.me/clicktechs" target="_blank" rel="noopener">
+            <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M9.04 15.04 8.71 19s.61.12.75-.32l1.8-3.52 4.18 3.1c.77.43 1.33.21 1.53-.71l2.77-13.01c.25-1.21-.46-1.69-1.21-1.39L2.7 9.77c-1.18.46-1.16 1.13-.2 1.41l4.9 1.53 11.37-7.18c.54-.33 1.03-.15.62.2z"/></svg>
+            Telegram: @clicktechs
+          </a>
+          <a href="mailto:Akremmohamed1993@gmail.com">
+            <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            Akremmohamed1993@gmail.com
+          </a>
+          <a href="tel:0917578903">
+            <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.05 15.05 0 006.6 6.6l2.2-2.2c.3-.3.7-.4 1.1-.3 1.2.4 2.6.6 4 .6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C11.8 21 3 12.2 3 2c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.4.2 2.8.6 4 .1.4 0 .8-.3 1.1l-2.2 2.2z"/></svg>
+            09‑17‑57‑89‑03
+          </a>
+          <a href="https://www.linkedin.com/in/awel-mohamed" target="_blank" rel="noopener">
+            <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.94 6.5A1.94 1.94 0 105 4.56 1.94 1.94 0 006.94 6.5zM5.5 20.5h3v-10h-3v10zM13 10.5v10h3v-5.86c0-3.1 4-3.35 4 0V20.5h3v-6.59c0-5.45-5.89-5.25-7-2.57v-1.34h-3z"/></svg>
+            LinkedIn: awel-mohamed
+          </a>
+        </div>
+        
+        <div class="contact-map">
+          <p>📍 Addis Ababa, Ethiopia</p>
+        </div>
+      </div>
+      
+      <form class="card contact-form" id="contactForm" onsubmit="handleFormSubmit(event)">
+        <label><span>Your name</span><input name="name" type="text" required placeholder="Your name" autocomplete="name"/></label>
+        <label><span>Your email</span><input name="email" type="email" required placeholder="you@example.com" autocomplete="email"/></label>
+        <label><span>Subject</span><input name="subject" type="text" required placeholder="Project inquiry or job opportunity"/></label>
+        <label><span>Message</span><textarea name="message" rows="5" required placeholder="Tell me about your project or opportunity..."></textarea></label>
+        <div class="form-actions">
+          <button class="btn primary" type="submit">Send message</button>
+          <a class="btn ghost" href="development Cv.pdf" download target="_blank" rel="noopener">Download CV</a>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <footer class="section site-footer">
+    <div class="container">
+      <small>&copy; 2025 Awel Mohamed Oumer — Built with ♥︎ • 
+        <a href="development Cv.pdf" download>Download CV</a> • 
+        <a href="https://t.me/clicktechs" target="_blank" rel="noopener">Telegram</a> • 
+        <a href="mailto:Akremmohamed1993@gmail.com">Email</a>
+      </small>
+    </div>
+  </footer>
+
+  <!-- Quick Bar -->
+  <div class="quick-bar" aria-hidden="false">
+    <a href="https://t.me/clicktechs" target="_blank" rel="noopener" title="Telegram" aria-label="Telegram">TG</a>
+    <a href="mailto:Akremmohamed1993@gmail.com" title="Email" aria-label="Email">@</a>
+    <a href="tel:0917578903" title="Phone" aria-label="Phone">☎</a>
+    <a href="#home" title="Back to top" aria-label="Back to top">↑</a>
+  </div>
+
+  <!-- Lightweight JS (defer) -->
+  <script defer>
+    // Nav toggle
+    const navToggle=document.getElementById('navToggle');
+    const navLinks=document.getElementById('navLinks');
+    if(navToggle){navToggle.addEventListener('click',()=>{const open=navLinks.classList.toggle('open');navToggle.setAttribute('aria-expanded',open)})}
+
+    // Modal Gallery (accessible, tiny)
+    const makeEl=(tag,cls)=>{const el=document.createElement(tag);if(cls)el.className=cls;return el};
+    const closeOnOutside=(overlay,box)=>overlay.addEventListener('click',e=>{if(!box.contains(e.target))overlay.remove()});
+    const views=document.querySelectorAll('.view');
+    views.forEach(btn=>btn.addEventListener('click',()=>{
+      const title=btn.dataset.title||'Project';
+      const desc=btn.dataset.desc||'';
+      const images=JSON.parse(btn.dataset.images||'[]');
+      let i=0;
+      const overlay=makeEl('div','overlay');
+      const modal=makeEl('div','modal');
+      const row=makeEl('div','row');
+      const h=makeEl('h3');h.textContent=title;
+      const nav=makeEl('div','nav');
+      const prev=makeEl('button','btn ghost');prev.textContent='◀ Prev';
+      const next=makeEl('button','btn ghost');next.textContent='Next ▶';
+      const close=makeEl('button','btn');close.textContent='✕ Close';
+      const img=makeEl('img');img.loading='eager';img.decoding='async';
+      const p=makeEl('p');p.textContent=desc;
+      row.append(h,nav,close);nav.append(prev,next);modal.append(row,img,p);overlay.append(modal);document.body.append(overlay);
+      const render=()=>{img.src=images[i];img.alt=`${title} — image ${i+1}/${images.length}`;prev.disabled=i===0;next.disabled=i===images.length-1};
+      render();
+      prev.onclick=()=>{if(i>0){i--;render()}};next.onclick=()=>{if(i<images.length-1){i++;render()}};close.onclick=()=>overlay.remove();
+      document.addEventListener('keydown',function onKey(e){if(e.key==='Escape'){overlay.remove();document.removeEventListener('keydown',onKey)}else if(e.key==='ArrowLeft'&&i>0){i--;render()}else if(e.key==='ArrowRight'&&i<images.length-1){i++;render()}});
+      closeOnOutside(overlay,modal);
+    }));
+
+    // Contact form handler
+    function handleFormSubmit(event) {
+      event.preventDefault();
+      const form = event.target;
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData);
+      
+      // In a real implementation, you would send this data to a server
+      // For now, we'll just show a success message
+      alert(`Thank you for your message, ${data.name}! I'll get back to you soon at ${data.email}.`);
+      form.reset();
+      
+      // Optional: Log the form data (remove in production)
+      console.log('Form submission:', data);
+    }
+
+    // Tiny fade‑in on scroll using IntersectionObserver (no library)
+    const io=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.style.transition='opacity .5s ease, transform .5s ease';e.target.style.opacity=1;e.target.style.transform='none';io.unobserve(e.target)}})},{threshold:.08});
+    document.querySelectorAll('.card,.project,.skill-category,.timeline-item,.education-item').forEach(el=>{el.style.opacity=.001;el.style.transform='translateY(8px)';io.observe(el)});
+  </script>
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">{
+    "@context":"https://schema.org",
+    "@type":"Person",
+    "name":"Awel Mohamed Oumer",
+    "jobTitle":"Web & App Developer",
+    "image":"image/Abol Mohammed.jpg",
+    "address":{
+      "@type":"PostalAddress",
+      "addressLocality":"Addis Ababa",
+      "addressCountry":"Ethiopia"
+    },
+    "email":"mailto:Akremmohamed1993@gmail.com",
+    "url":"",
+    "sameAs":[
+      "https://t.me/clicktechs",
+      "https://www.linkedin.com/in/awel-mohamed"
+    ]
+  }
+  </script>
+</body>
+</html>
