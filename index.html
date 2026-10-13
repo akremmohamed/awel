@@ -1,1010 +1,862 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Awel Mohamed Oumer — Full-Stack Developer Portfolio</title>
-  <meta name="description" content="Awel Mohamed Oumer — Full-Stack Developer specializing in web applications, PHP, JavaScript, and React. View my projects and technical skills." />
-  <link rel="preload" as="image" href="image/Abol Mohammed.jpg"/>
-  <link rel="icon" href="image/Abol Mohammed.jpg" type="image/jpeg"/>
-  <meta property="og:title" content="Awel Mohamed Oumer — Full-Stack Developer"/>
-  <meta property="og:description" content="Web & App Developer — projects, skills, contact, and CV."/>
-  <meta property="og:type" content="website"/>
-  <meta property="og:image" content="image/Abol Mohammed.jpg"/>
-  <style>
-    /* ======= Base / Reset (tiny) ======= */
-    :root{
-      --bg:#0b0f14;
-      --card:#0f1620aa;
-      --cardSolid:#121a25;
-      --fg:#e7ecf3;
-      --muted:#a7b2c3;
-      --brand:#66e0d9;
-      --brand2:#7aa3ff;
-      --ring:0 10px 30px rgba(0,0,0,.4);
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;
-      background:radial-gradient(1200px 700px at 10% -10%,#19314555,transparent),
-                radial-gradient(1200px 700px at 110% 0%,#1a2b5055,transparent),
-                var(--bg);
-      color:var(--fg);
-      font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Inter,Arial,sans-serif;
-      -webkit-font-smoothing:antialiased;
-    }
-    a{color:inherit;text-decoration:none}
-    img{display:block;max-width:100%;}
-    .container{width:min(1100px,92%);margin-inline:auto}
-    .btn{
-      display:inline-flex;
-      gap:.5rem;
-      align-items:center;
-      border:1px solid #2a3a50;
-      background:linear-gradient(180deg,#182230,#121a25);
-      padding:.7rem 1rem;
-      border-radius:14px;
-      color:#e9f1ff;
-      box-shadow:inset 0 1px 0 #2d3c50;
-      transition:.2s transform,.2s border-color,.2s box-shadow;
-      cursor:pointer;
-    }
-    .btn:hover{
-      transform:translateY(-1px);
-      border-color:#3b5375;
-      box-shadow:0 4px 12px rgba(0,0,0,.3);
-    }
-    .btn.primary{
-      background:linear-gradient(180deg, #22b8b2, #208b86);
-      border-color:#22b8b2;
-      color:#041316;
-    }
-    .btn.ghost{background:transparent}
-    .tag{
-      display:inline-block;
-      background:#182230;
-      border:1px solid #26364a;
-      padding:.15rem .5rem;
-      border-radius:999px;
-      color:#cfe2ff;
-      font-size:.8rem;
-    }
-    .muted{color:var(--muted)}
-    .sr-only {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      white-space: nowrap;
-      border: 0;
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Abol Mohamed Oumer — IT Officer & Full-Stack Developer</title>
+<meta name="description" content="Abol Mohamed Oumer — IT Officer, Full-Stack Developer, Network & System Specialist based in Addis Ababa, Ethiopia." />
+<link rel="icon" href="image/Abol Mohammed.jpg" type="image/jpeg"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0f172a;
+    --bg-alt: #111c33;
+    --card: #1e293b;
+    --card-hover: #243347;
+    --border: #2a3a52;
+    --text: #e2e8f0;
+    --text-muted: #94a3b8;
+    --accent: #38bdf8;
+    --accent-2: #0ea5e9;
+    --accent-glow: rgba(56, 189, 248, 0.15);
+    --radius: 14px;
+    --max: 1100px;
+  }
 
-    /* ======= Header / Nav ======= */
-    .site-header{
-      position:sticky;
-      top:0;
-      z-index:50;
-      background:linear-gradient(180deg,rgba(11,15,20,.9),rgba(11,15,20,.6) 60%,transparent);
-      backdrop-filter:saturate(1.2) blur(10px);
-    }
-    .nav{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      padding:12px 0;
-    }
-    .brand{
-      font-weight:700;
-      letter-spacing:.2px;
-      background:linear-gradient(90deg,var(--brand),var(--brand2));
-      -webkit-background-clip:text;
-      background-clip:text;
-      color:transparent;
-      font-size:1.05rem;
-    }
-    .nav-links{
-      display:flex;
-      gap:.6rem;
-      list-style:none;
-      padding:0;
-      margin:0;
-    }
-    .nav-links a{
-      padding:.5rem .7rem;
-      border-radius:10px;
-      transition:background-color .2s;
-    }
-    .nav-links a:hover{background:#17202c}
-    .nav-toggle{display:none}
-    @media (max-width: 820px){
-      .nav-links{
-        position:fixed;
-        inset:56px 0 auto 0;
-        background:#0b0f14;
-        display:none;
-        flex-direction:column;
-        padding:12px;
-        border-top:1px solid #1a2737;
-      }
-      .nav-links.open{display:flex}
-      .nav-toggle{
-        display:inline-flex;
-        gap:.5rem;
-        align-items:center;
-        border:1px solid #243448;
-        background:#111926;
-        padding:.5rem .7rem;
-        border-radius:10px;
-        color:#d7e3f7;
-        cursor:pointer;
-      }
-    }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
 
-    /* ======= Hero ======= */
-    .hero{
-      display:grid;
-      grid-template-columns:1.25fr .9fr;
-      gap:28px;
-      align-items:center;
-      padding:40px 0 14px;
-    }
-    .hero h1{
-      font-size:clamp(1.8rem,2.4vw,2.6rem);
-      line-height:1.2;
-      margin:.2rem 0 .6rem;
-    }
-    .subtitle{color:#c5d4ea}
-    .lead{color:#b8c6da}
-    .photo-ring{
-      --s:230px;
-      width:var(--s);
-      height:var(--s);
-      border-radius:50%;
-      padding:6px;
-      background:conic-gradient(from 220deg,var(--brand),#ffffff22 30%,var(--brand2));
-      box-shadow:var(--ring);
-    }
-    .photo-ring img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      border-radius:50%;
-    }
-    .social-inline{
-      display:flex;
-      gap:.6rem;
-      margin-top:8px;
-    }
-    .social-inline a{
-      display:grid;
-      place-items:center;
-      width:38px;
-      height:38px;
-      border-radius:11px;
-      border:1px solid #203045;
-      background:#121a25;
-      transition:transform .2s, background-color .2s;
-    }
-    .social-inline a:hover{
-      transform:translateY(-2px);
-      background:#1a2535;
-    }
-    .quick-contact{
-      list-style:none;
-      padding:0;
-      margin:12px 0 0;
-      display:grid;
-      gap:6px;
-    }
-    .quick-contact a{
-      margin-left:.4rem;
-      color:#cfe2ff;
-      transition:color .2s;
-    }
-    .quick-contact a:hover{color:var(--brand)}
-    @media (max-width: 980px){.hero{grid-template-columns:1fr;}}
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
 
-    /* ======= Sections ======= */
-    .section{padding:40px 0}
-    .section h2{
-      font-size:clamp(1.4rem,2vw,1.8rem);
-      margin:0 0 12px;
-      position:relative;
-    }
-    .section h2::after {
-      content: '';
-      position: absolute;
-      bottom: -8px;
-      left: 0;
-      width: 50px;
-      height: 3px;
-      background: linear-gradient(90deg, var(--brand), var(--brand2));
-      border-radius: 2px;
-    }
-    .two-col{display:grid;grid-template-columns:1.2fr .8fr;gap:20px}
-    @media (max-width: 900px){.two-col{grid-template-columns:1fr}}
-    .card{
-      background:var(--card);
-      border:1px solid #1a2737;
-      border-radius:18px;
-      padding:16px;
-      box-shadow:var(--ring);
-      transition:transform .3s, box-shadow .3s;
-    }
-    .card:hover {
-      transform:translateY(-5px);
-      box-shadow:0 15px 30px rgba(0,0,0,.4);
-    }
-    .cards{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
-    .cards>.span-6{grid-column:span 6}
-    .cards>.span-4{grid-column:span 4}
-    @media (max-width:960px){.cards{grid-template-columns:1fr}.cards>*{grid-column:auto}}
+  a { color: var(--accent); text-decoration: none; transition: color 0.2s; }
+  a:hover { color: #7dd3fc; }
 
-    /* ======= Skills ======= */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 16px;
-    }
-    .skill-category {
-      background: var(--cardSolid);
-      border: 1px solid #1a2737;
-      border-radius: 16px;
-      padding: 20px;
-    }
-    .skill-category h3 {
-      margin-top: 0;
-      color: var(--brand);
-      font-size: 1.1rem;
-    }
-    .skill-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 12px;
-    }
-    .skill-item {
-      background: #182230;
-      border: 1px solid #26364a;
-      padding: 6px 12px;
-      border-radius: 20px;
-      font-size: 0.85rem;
-      transition: transform .2s, background-color .2s;
-    }
-    .skill-item:hover {
-      transform: translateY(-2px);
-      background: #1e2c40;
-    }
+  .container { max-width: var(--max); margin: 0 auto; padding: 0 1.5rem; }
 
-    /* ======= Projects ======= */
-    .projects{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
-    .project{
-      grid-column:span 6;
-      background:var(--cardSolid);
-      border:1px solid #1a2737;
-      border-radius:16px;
-      overflow:hidden;
-      display:flex;
-      flex-direction:column;
-      transition:transform .3s, box-shadow .3s;
-    }
-    .project:hover {
-      transform:translateY(-5px);
-      box-shadow:0 15px 30px rgba(0,0,0,.4);
-    }
-    .project img{
-      aspect-ratio:16/9;
-      object-fit:cover;
-      transition:transform .5s;
-    }
-    .project:hover img {
-      transform: scale(1.05);
-    }
-    .project .body{padding:12px;flex-grow:1;}
-    .project .actions{
-      display:flex;
-      gap:8px;
-      flex-wrap:wrap;
-      padding:0 12px 14px;
-      align-items:center;
-    }
-    .project-links {
-      display: flex;
-      gap: 8px;
-      margin-left: auto;
-    }
-    @media (max-width: 900px){.project{grid-column:1/-1}}
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-inner {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1rem 1.5rem; max-width: var(--max); margin: 0 auto;
+  }
+  .logo { font-weight: 800; font-size: 1.15rem; letter-spacing: -0.02em; color: var(--text); }
+  .logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 1.75rem; list-style: none; }
+  .nav-links a { color: var(--text-muted); font-size: 0.9rem; font-weight: 500; }
+  .nav-links a:hover { color: var(--accent); }
+  .menu-toggle { display: none; background: none; border: none; color: var(--text); font-size: 1.5rem; cursor: pointer; }
 
-    /* ======= Timeline ======= */
-    .timeline{display:grid;gap:10px}
-    .timeline-item{
-      display:grid;
-      grid-template-columns:90px 1fr;
-      gap:12px;
-      align-items:start;
-    }
-    .timeline .time{color:#b3c0d4}
+  /* HERO */
+  .hero { padding: 6rem 0 5rem; position: relative; overflow: hidden; }
+  .hero::before {
+    content: ''; position: absolute; top: -200px; right: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-grid {
+    display: grid; grid-template-columns: 1.3fr 1fr; gap: 3.5rem;
+    align-items: center; position: relative;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(56, 189, 248, 0.1);
+    border: 1px solid rgba(56, 189, 248, 0.25);
+    color: var(--accent); font-size: 0.8rem; font-weight: 500;
+    padding: 0.35rem 0.85rem; border-radius: 999px; margin-bottom: 1.25rem;
+  }
+  .hero-badge::before {
+    content: ''; width: 7px; height: 7px; border-radius: 50%;
+    background: #22c55e; box-shadow: 0 0 8px #22c55e;
+  }
+  .hero h1 {
+    font-size: clamp(2rem, 4.5vw, 3rem);
+    font-weight: 800; line-height: 1.15; letter-spacing: -0.03em;
+    margin-bottom: 1.25rem;
+  }
+  .hero h1 .accent {
+    background: linear-gradient(135deg, var(--accent), #818cf8);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .hero-sub {
+    font-size: 1.05rem; color: var(--text-muted);
+    max-width: 540px; margin-bottom: 2rem;
+  }
+  .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
 
-    /* ======= Contact ======= */
-    .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-    @media (max-width:880px){.contact-grid{grid-template-columns:1fr}}
-    .contact-list a{
-      display:flex;
-      gap:.6rem;
-      align-items:center;
-      padding:.5rem;
-      border-radius:10px;
-      border:1px solid #1a2737;
-      background:#0f1620;
-      transition:background-color .2s, transform .2s;
-    }
-    .contact-list a:hover {
-      background:#17202c;
-      transform:translateX(5px);
-    }
-    .contact-form{display:grid;gap:10px}
-    .contact-form label{display:grid;gap:6px}
-    .contact-form input,.contact-form textarea{
-      background:#0e1520;
-      border:1px solid #1a2737;
-      border-radius:12px;
-      padding:.75rem;
-      color:#e6f0ff;
-      transition:border-color .2s;
-    }
-    .contact-form input:focus,.contact-form textarea:focus {
-      outline:none;
-      border-color:var(--brand);
-    }
-    .form-actions{display:flex;gap:8px;flex-wrap:wrap}
+  .btn {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.75rem 1.5rem; border-radius: 10px;
+    font-size: 0.9rem; font-weight: 600;
+    transition: all 0.2s; cursor: pointer; border: 1px solid transparent;
+  }
+  .btn-primary { background: var(--accent); color: #0f172a; }
+  .btn-primary:hover {
+    background: #7dd3fc; color: #0f172a; transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(56, 189, 248, 0.3);
+  }
+  .btn-outline { border-color: var(--border); color: var(--text); }
+  .btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
 
-    /* ======= Footer & Quick bar ======= */
-    .site-footer{border-top:1px solid #1a2737}
-    .quick-bar{
-      position:fixed;
-      right:14px;
-      bottom:14px;
-      display:flex;
-      flex-direction:column;
-      gap:8px;
-      z-index:40;
-    }
-    .quick-bar a{
-      width:44px;
-      height:44px;
-      display:grid;
-      place-items:center;
-      border-radius:12px;
-      background:#121a25;
-      border:1px solid #1a2737;
-      transition:transform .2s, background-color .2s;
-    }
-    .quick-bar a:hover {
-      transform:translateY(-3px);
-      background:#1a2535;
-    }
+  /* Photo */
+  .hero-photo { display: flex; justify-content: center; position: relative; }
+  .photo-frame {
+    width: 280px; height: 280px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), #818cf8);
+    padding: 4px; box-shadow: 0 0 60px rgba(56, 189, 248, 0.2);
+  }
+  .photo-inner {
+    width: 100%; height: 100%; border-radius: 50%;
+    background: var(--card); display: flex;
+    align-items: center; justify-content: center;
+    font-size: 5rem; font-weight: 800; color: var(--accent);
+    overflow: hidden;
+  }
+  .photo-inner img { width: 100%; height: 100%; object-fit: cover; }
 
-    /* ======= Modal (Gallery) ======= */
-    .overlay{
-      position:fixed;
-      inset:0;
-      background:rgba(0,0,0,.85);
-      display:grid;
-      place-items:center;
-      z-index:60;
-      padding:20px;
-    }
-    .modal{
-      width:min(860px,94vw);
-      background:#0f1620;
-      border:1px solid #1a2737;
-      border-radius:16px;
-      box-shadow:var(--ring);
-      padding:12px;
-      max-height:90vh;
-      overflow-y:auto;
-    }
-    .modal img{
-      max-height:min(70vh,700px);
-      margin:auto;
-      border-radius:12px;
-      width:100%;
-      object-fit:contain;
-    }
-    .modal .row{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:10px;
-      margin:6px 0 10px;
-    }
-    .modal .nav{display:flex;gap:8px}
+  /* SECTIONS */
+  section { padding: 4.5rem 0; }
+  section.alt {
+    background: var(--bg-alt);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .section-label {
+    font-size: 0.78rem; font-weight: 600; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--accent); margin-bottom: 0.6rem;
+  }
+  .section-title {
+    font-size: clamp(1.7rem, 3.5vw, 2.2rem);
+    font-weight: 700; letter-spacing: -0.02em; margin-bottom: 2.5rem;
+  }
 
-    /* ======= Education Timeline ======= */
-    .education-timeline {
-      display: grid;
-      gap: 16px;
-      position: relative;
-    }
-    .education-timeline::before {
-      content: '';
-      position: absolute;
-      left: 20px;
-      top: 0;
-      bottom: 0;
-      width: 2px;
-      background: linear-gradient(to bottom, var(--brand), var(--brand2));
-      border-radius: 2px;
-    }
-    .education-item {
-      display: grid;
-      grid-template-columns: 40px 1fr;
-      gap: 16px;
-      align-items: start;
-    }
-    .education-icon {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--brand), var(--brand2));
-      display: grid;
-      place-items: center;
-      color: #041316;
-      font-weight: bold;
-      z-index: 1;
-    }
-    .education-content {
-      background: var(--cardSolid);
-      border: 1px solid #1a2737;
-      border-radius: 12px;
-      padding: 16px;
-    }
+  /* About */
+  .about-text { max-width: 780px; font-size: 1.02rem; color: var(--text-muted); }
+  .about-text p + p { margin-top: 1rem; }
+  .about-text strong { color: var(--text); font-weight: 600; }
 
-    /* ======= Project Demo Features ======= */
-    .demo-buttons {
-      display: flex;
-      gap: 8px;
-      margin-top: 12px;
-    }
-    .demo-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 6px 12px;
-      background: #182230;
-      border: 1px solid #26364a;
-      border-radius: 8px;
-      color: #cfe2ff;
-      font-size: 0.85rem;
-      transition: all 0.2s;
-    }
-    .demo-btn:hover {
-      background: #1e2c40;
-      transform: translateY(-2px);
-    }
-    .demo-btn.live {
-      background: linear-gradient(135deg, #22b8b2, #208b86);
-      color: #041316;
-    }
+  .stats {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1rem; margin-top: 2.5rem;
+  }
+  .stat-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 1.25rem;
+  }
+  .stat-card .label {
+    font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--text-muted); margin-bottom: 0.35rem;
+  }
+  .stat-card .value { font-size: 1.05rem; font-weight: 600; color: var(--text); }
 
-    /* ======= Contact Map ======= */
-    .contact-map {
-      height: 200px;
-      background: #0e1520;
-      border: 1px solid #1a2737;
-      border-radius: 12px;
-      overflow: hidden;
-      margin-top: 16px;
-      display: grid;
-      place-items: center;
-      color: var(--muted);
-    }
+  /* Skills */
+  .skills-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.25rem;
+  }
+  .skill-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 1.5rem; transition: all 0.25s;
+  }
+  .skill-card:hover {
+    border-color: rgba(56, 189, 248, 0.4);
+    transform: translateY(-3px); background: var(--card-hover);
+  }
+  .skill-card h3 {
+    font-size: 1rem; font-weight: 600; margin-bottom: 0.9rem;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .skill-card h3 .icon { font-size: 1.1rem; }
+  .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .tag {
+    background: rgba(56, 189, 248, 0.08);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    color: #bae6fd; font-size: 0.78rem; font-weight: 500;
+    padding: 0.3rem 0.7rem; border-radius: 6px;
+  }
 
-    /* ======= Motion safety ======= */
-    @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
-  </style>
+  /* Experience */
+  .timeline { position: relative; padding-left: 2rem; }
+  .timeline::before {
+    content: ''; position: absolute; left: 6px; top: 6px; bottom: 6px;
+    width: 2px; background: linear-gradient(to bottom, var(--accent), transparent);
+  }
+  .timeline-item { position: relative; padding-bottom: 2.25rem; }
+  .timeline-item:last-child { padding-bottom: 0; }
+  .timeline-item::before {
+    content: ''; position: absolute; left: -2rem; top: 6px;
+    width: 14px; height: 14px; border-radius: 50%;
+    background: var(--bg); border: 2px solid var(--accent);
+    box-shadow: 0 0 12px var(--accent-glow);
+  }
+  .timeline-date { font-size: 0.8rem; font-weight: 600; color: var(--accent); margin-bottom: 0.3rem; }
+  .timeline-item h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.15rem; }
+  .timeline-item .company { font-size: 0.92rem; color: var(--text-muted); margin-bottom: 0.6rem; }
+  .timeline-item p { font-size: 0.95rem; color: var(--text-muted); }
+  .timeline-item ul {
+    margin-top: 0.6rem; padding-left: 1.2rem;
+    color: var(--text-muted); font-size: 0.95rem;
+  }
+  .timeline-item ul li { margin-bottom: 0.35rem; }
+
+  /* Projects */
+  .projects-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+  .project-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: var(--radius); overflow: hidden;
+    transition: all 0.25s; display: flex; flex-direction: column;
+  }
+  .project-card:hover {
+    border-color: rgba(56, 189, 248, 0.4);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+  }
+  .project-card img { width: 100%; height: 180px; object-fit: cover; }
+  .project-card .body { padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; }
+  .project-card h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.75rem; }
+  .project-card p { font-size: 0.92rem; color: var(--text-muted); margin-bottom: 1rem; flex-grow: 1; }
+  .project-card .tags { margin-bottom: 0.75rem; }
+  .project-actions { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+  .btn-small {
+    display: inline-flex; align-items: center; gap: 0.35rem;
+    padding: 0.45rem 0.85rem; border-radius: 8px;
+    font-size: 0.82rem; font-weight: 600;
+    border: 1px solid var(--border); background: transparent;
+    color: var(--accent); cursor: pointer; transition: all 0.2s;
+  }
+  .btn-small:hover { background: rgba(56, 189, 248, 0.1); border-color: var(--accent); }
+  .btn-small.primary { background: var(--accent); color: #0f172a; border-color: var(--accent); }
+  .btn-small.primary:hover { background: #7dd3fc; }
+
+  /* Education */
+  .edu-list { display: grid; gap: 1.25rem; }
+  .edu-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 1.5rem;
+    display: flex; gap: 1.25rem; align-items: flex-start; transition: all 0.25s;
+  }
+  .edu-card:hover { border-color: rgba(56, 189, 248, 0.4); background: var(--card-hover); }
+  .edu-icon {
+    flex-shrink: 0; width: 52px; height: 52px; border-radius: 12px;
+    background: rgba(56, 189, 248, 0.1);
+    border: 1px solid rgba(56, 189, 248, 0.25);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem; font-weight: 800; color: var(--accent);
+  }
+  .edu-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.25rem; }
+  .edu-card .school { font-size: 0.92rem; color: var(--text-muted); margin-bottom: 0.5rem; }
+  .edu-card p { font-size: 0.92rem; color: var(--text-muted); }
+
+  /* Contact */
+  .contact-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.25rem;
+  }
+  .contact-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 1.5rem;
+    display: flex; align-items: center; gap: 1rem; transition: all 0.25s;
+  }
+  .contact-card:hover {
+    border-color: rgba(56, 189, 248, 0.4);
+    transform: translateY(-3px);
+  }
+  .contact-icon {
+    flex-shrink: 0; width: 44px; height: 44px; border-radius: 10px;
+    background: rgba(56, 189, 248, 0.1);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem;
+  }
+  .contact-card .label {
+    font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--text-muted); margin-bottom: 0.15rem;
+  }
+  .contact-card .value {
+    font-size: 0.95rem; font-weight: 500;
+    color: var(--text); word-break: break-word;
+  }
+
+  /* Footer */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 2rem 0; text-align: center;
+    font-size: 0.85rem; color: var(--text-muted);
+  }
+  footer .heart { color: #f87171; }
+
+  /* Languages chips */
+  .chips { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+  .chip {
+    background: rgba(56, 189, 248, 0.08);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    color: #bae6fd; font-size: 0.82rem; font-weight: 500;
+    padding: 0.4rem 0.85rem; border-radius: 999px;
+  }
+
+  /* Fade-in */
+  .fade-in {
+    opacity: 0; transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  /* Gallery Modal */
+  .gallery-overlay {
+    position: fixed; inset: 0; z-index: 200;
+    background: rgba(2, 6, 15, 0.92);
+    display: flex; align-items: center; justify-content: center;
+    padding: 1.5rem;
+  }
+  .gallery-modal {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: var(--radius); max-width: 900px; width: 100%;
+    max-height: 90vh; overflow-y: auto; padding: 1.5rem;
+  }
+  .gallery-header {
+    display: flex; justify-content: space-between; align-items: center;
+    gap: 1rem; margin-bottom: 1rem; flex-wrap: wrap;
+  }
+  .gallery-header h3 { font-size: 1.15rem; font-weight: 700; }
+  .gallery-nav { display: flex; gap: 0.5rem; }
+  .gallery-modal img {
+    width: 100%; max-height: 65vh; object-fit: contain;
+    border-radius: 10px; margin-bottom: 1rem; background: #0b1220;
+  }
+  .gallery-modal p { color: var(--text-muted); font-size: 0.92rem; }
+
+  /* Responsive */
+  @media (max-width: 820px) {
+    .hero-grid { grid-template-columns: 1fr; text-align: center; }
+    .hero-photo { order: -1; }
+    .hero-sub { margin-left: auto; margin-right: auto; }
+    .hero-cta { justify-content: center; }
+    .photo-frame { width: 220px; height: 220px; }
+    .nav-links {
+      display: none; position: absolute; top: 100%; left: 0; right: 0;
+      background: var(--bg-alt); border-bottom: 1px solid var(--border);
+      flex-direction: column; padding: 1rem 1.5rem; gap: 0.85rem;
+    }
+    .nav-links.open { display: flex; }
+    .menu-toggle { display: block; }
+  }
+  @media (max-width: 480px) {
+    .hero { padding: 4rem 0 3rem; }
+    section { padding: 3.5rem 0; }
+    .btn { width: 100%; justify-content: center; }
+  }
+</style>
 </head>
 <body>
-  <header class="site-header">
-    <nav class="nav container" aria-label="Primary">
-      <a class="brand" href="#home">Awel Mohamed</a>
-      <button class="nav-toggle" id="navToggle" aria-controls="navLinks" aria-expanded="false">Menu ▾</button>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#education">Education</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
 
-  <main id="home" class="container hero" aria-label="Introduction">
-    <section>
-      <h1>Full-Stack Developer Building Digital Solutions</h1>
-      <p class="subtitle">BSc. Information Technology — Specializing in Web & Mobile Applications</p>
-      <p class="lead">Recent IT graduate with hands‑on experience building full-stack web applications, desktop systems, and mobile solutions. Focused on clean code, user experience, and scalable architecture.</p>
-      <p class="lead">Proficient in modern web technologies including PHP, JavaScript, React, and database management with MySQL and MongoDB.</p>
-      <div class="actions">
-        <a class="btn primary" href="development Cv.pdf" download target="_blank" rel="noopener">Download CV
-          <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3v10.59l3.3-3.3 1.4 1.42-5 5-5-5 1.4-1.42 3.3 3.3V3h1.6zM5 19h14v2H5z"/></svg>
-        </a>
-        <a class="btn ghost" href="#projects">View Projects</a>
-        <a class="btn ghost" href="#contact">Contact Me</a>
-      </div>
-      <div class="social-inline" aria-label="Social links">
-        <a href="https://t.me/clicktechs" target="_blank" rel="noopener" title="Telegram" aria-label="Telegram">
-          <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M9.04 15.04 8.71 19s.61.12.75-.32l1.8-3.52 4.18 3.1c.77.43 1.33.21 1.53-.71l2.77-13.01c.25-1.21-.46-1.69-1.21-1.39L2.7 9.77c-1.18.46-1.16 1.13-.2 1.41l4.9 1.53 11.37-7.18c.54-.33 1.03-.15.62.2z"/></svg>
-        </a>
-        <a href="mailto:Akremmohamed1993@gmail.com" title="Email" aria-label="Email">
-          <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
-        </a>
-        <a href="tel:0917578903" title="Phone" aria-label="Phone">
-          <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.05 15.05 0 006.6 6.6l2.2-2.2c.3-.3.7-.4 1.1-.3 1.2.4 2.6.6 4 .6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C11.8 21 3 12.2 3 2c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.4.2 2.8.6 4 .1.4 0 .8-.3 1.1l-2.2 2.2z"/></svg>
-        </a>
-        <a href="https://www.linkedin.com/in/awel-mohamed" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn">
-          <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.94 6.5A1.94 1.94 0 105 4.56 1.94 1.94 0 006.94 6.5zM5.5 20.5h3v-10h-3v10zM13 10.5v10h3v-5.86c0-3.1 4-3.35 4 0V20.5h3v-6.59c0-5.45-5.89-5.25-7-2.57v-1.34h-3z"/></svg>
-        </a>
-      </div>
-    </section>
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#home" class="logo">Abol <span>Mohamed</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">☰</button>
+  </div>
+</nav>
 
-    <aside>
-      <div class="photo-ring" aria-hidden="true">
-        <img src="image/Abol Mohammed.jpg" alt="Portrait of Awel Mohamed" loading="eager" decoding="async"/>
+<!-- HERO -->
+<header class="hero" id="home">
+  <div class="container hero-grid">
+    <div>
+      <div class="hero-badge">Open to opportunities</div>
+      <h1>IT Officer <br /><span class="accent">& Full-Stack Developer</span></h1>
+      <p class="hero-sub">
+        BSc in Information Technology with hands-on experience in network administration,
+        system maintenance, database instruction, and secure full-stack software engineering.
+        Based in Addis Ababa, Ethiopia.
+      </p>
+      <div class="hero-cta">
+        <a href="#contact" class="btn btn-primary">Get in touch →</a>
+        <a href="IT Officer Cv.pdf" download class="btn btn-outline">Download CV</a>
       </div>
-      <ul class="quick-contact" aria-label="Quick contact">
-        <li><strong>Phone</strong><a href="tel:0917578903">09-17-57-89-03</a></li>
-        <li><strong>Email</strong><a href="mailto:Akremmohamed1993@gmail.com">Akremmohamed1993@gmail.com</a></li>
-        <li><strong>TG</strong><a href="https://t.me/clicktechs" target="_blank" rel="noopener">@clicktechs</a></li>
-        <li><strong>Location</strong><span>Addis Ababa, Ethiopia</span></li>
-      </ul>
-    </aside>
-  </main>
-
-  <!-- About -->
-  <section id="about" class="section container">
-    <div class="two-col">
-      <div class="card">
-        <h2>About Me</h2>
-        <p>I'm a passionate full-stack developer with a BSc in Information Technology from Ambo University. I specialize in creating practical, user-focused web applications that solve real-world problems.</p>
-        <p>My technical journey includes developing systems for inventory management, job portals, student management, and travel applications. I'm particularly skilled at translating business requirements into efficient technical solutions.</p>
-        <p class="muted">I'm currently seeking opportunities to apply my skills in a professional environment where I can contribute to meaningful projects while continuing to grow as a developer.</p>
-        <div class="cards">
-          <div class="card span-4"><strong>University</strong><br><span class="muted">Ambo University (2019–2024)</span></div>
-          <div class="card span-4"><strong>Final Project</strong><br><span class="muted">Drugstore Management System</span></div>
-          <div class="card span-4"><strong>Availability</strong><br><span class="muted">Open to opportunities</span></div>
+    </div>
+    <div class="hero-photo">
+      <div class="photo-frame">
+        <div class="photo-inner">
+          <img src="image/Abol Mohammed.jpg" alt="Abol Mohamed Oumer" />
         </div>
       </div>
-      <aside class="card">
-        <h3>Beyond Coding</h3>
-        <ul>
-          <li>📚 Continuous Learning - Always exploring new technologies and best practices</li>
-          <li>🕌 Community Engagement - Active in mosque activities and community service</li>
-          <li>💻 Problem Solving - Enjoy tackling complex challenges with creative solutions</li>
-          <li>🌍 Local Impact - Focus on developing solutions with positive community impact</li>
-        </ul>
-      </aside>
     </div>
-  </section>
+  </div>
+</header>
 
-  <!-- Skills -->
-  <section id="skills" class="section container">
-    <h2>Technical Skills</h2>
+<!-- ABOUT -->
+<section id="about">
+  <div class="container fade-in">
+    <div class="section-label">About Me</div>
+    <h2 class="section-title">Building "zero-error" IT operations & reliable software</h2>
+    <div class="about-text">
+      <p>
+        I'm an IT professional with a <strong>BSc in Information Technology from Ambo University</strong>,
+        combining hands-on experience in network administration, system maintenance, database instruction,
+        and full-stack software engineering.
+      </p>
+      <p>
+        I've served in high-stakes environments such as the <strong>National Election Board of Ethiopia (NEBE)</strong>
+        as an IT Officer, ensured system uptime, and provided critical technical support. Currently,
+        I work as a <strong>Computer & Network Technician at Admas University</strong>, and previously served as a
+        <strong>Database Instructor & Computer Maintenance Specialist at Sage Training Institute</strong>.
+      </p>
+      <p>
+        Through freelance work, I've developed custom, secure solutions using <strong>Laravel</strong> for Ananiya
+        Drug Store and its affiliated medium clinic — demonstrating advanced full-stack and database skills.
+      </p>
+    </div>
+
+    <div class="stats">
+      <div class="stat-card">
+        <div class="label">Degree</div>
+        <div class="value">BSc Information Technology</div>
+      </div>
+      <div class="stat-card">
+        <div class="label">University</div>
+        <div class="value">Ambo University</div>
+      </div>
+      <div class="stat-card">
+        <div class="label">Focus</div>
+        <div class="value">IT Operations & Full-Stack</div>
+      </div>
+      <div class="stat-card">
+        <div class="label">Availability</div>
+        <div class="value">Open to work</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="alt">
+  <div class="container fade-in">
+    <div class="section-label">Technical Skills</div>
+    <h2 class="section-title">What I work with</h2>
+
     <div class="skills-grid">
-      <div class="skill-category">
-        <h3>Frontend Development</h3>
-        <div class="skill-list">
-          <span class="skill-item">HTML5</span>
-          <span class="skill-item">CSS3</span>
-          <span class="skill-item">JavaScript (ES6+)</span>
-          <span class="skill-item">React</span>
-          <span class="skill-item">Responsive Design</span>
-          <span class="skill-item">Bootstrap</span>
+      <div class="skill-card">
+        <h3><span class="icon">💻</span> Programming</h3>
+        <div class="tags">
+          <span class="tag">HTML</span>
+          <span class="tag">CSS</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">PHP</span>
+          <span class="tag">Java</span>
+          <span class="tag">Python</span>
+          <span class="tag">C#</span>
+          <span class="tag">React</span>
         </div>
       </div>
-      <div class="skill-category">
-        <h3>Backend Development</h3>
-        <div class="skill-list">
-          <span class="skill-item">PHP</span>
-          <span class="skill-item">Node.js</span>
-          <span class="skill-item">REST APIs</span>
-          <span class="skill-item">Java</span>
-          <span class="skill-item">C#</span>
+
+      <div class="skill-card">
+        <h3><span class="icon">🛠️</span> IT & Infrastructure</h3>
+        <div class="tags">
+          <span class="tag">Computer Maintenance</span>
+          <span class="tag">Network Maintenance</span>
+          <span class="tag">Phone Maintenance</span>
+          <span class="tag">System Administration</span>
         </div>
       </div>
-      <div class="skill-category">
-        <h3>Database & Tools</h3>
-        <div class="skill-list">
-          <span class="skill-item">MySQL</span>
-          <span class="skill-item">PostgreSQL</span>
-          <span class="skill-item">MongoDB</span>
-          <span class="skill-item">Git & GitHub</span>
-          <span class="skill-item">VS Code</span>
-          <span class="skill-item">Hosting & Deployment</span>
+
+      <div class="skill-card">
+        <h3><span class="icon">🌐</span> Development</h3>
+        <div class="tags">
+          <span class="tag">Web Development</span>
+          <span class="tag">App Development</span>
+          <span class="tag">Laravel</span>
+          <span class="tag">Database Management</span>
         </div>
       </div>
-      <div class="skill-category">
-        <h3>Soft Skills</h3>
-        <div class="skill-list">
-          <span class="skill-item">Problem Solving</span>
-          <span class="skill-item">Team Collaboration</span>
-          <span class="skill-item">Adaptability</span>
-          <span class="skill-item">Project Management</span>
-          <span class="skill-item">Communication</span>
+
+      <div class="skill-card">
+        <h3><span class="icon">🤝</span> Tools & Soft Skills</h3>
+        <div class="tags">
+          <span class="tag">MS Office</span>
+          <span class="tag">Communication</span>
+          <span class="tag">Technical Training</span>
+          <span class="tag">Problem Solving</span>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Projects -->
-  <section id="projects" class="section container">
-    <h2>Featured Projects</h2>
-    <div class="projects">
-      <article class="project">
-        <img src="image/p/login.png" alt="Drugstore Management System dashboard" loading="lazy" decoding="async"/>
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container fade-in">
+    <div class="section-label">Professional Experience</div>
+    <h2 class="section-title">Where I've worked</h2>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-date">Currently</div>
+        <h3>Computer & Network Technician</h3>
+        <div class="company">Admas University</div>
+        <ul>
+          <li>Handling daily network troubleshooting and hardware maintenance</li>
+          <li>Providing user support for a large institutional network</li>
+          <li>Maintaining network infrastructure and system uptime</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">January — June 10</div>
+        <h3>IT Officer</h3>
+        <div class="company">National Election Board of Ethiopia (NEBE)</div>
+        <ul>
+          <li>Managed critical tech operations in a high-stakes national environment</li>
+          <li>Ensured system uptime throughout operations</li>
+          <li>Provided high-level technical support</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">Previous</div>
+        <h3>Database Instructor & Computer Maintenance Specialist</h3>
+        <div class="company">Sage Training Institute</div>
+        <ul>
+          <li>Deepened expertise in data management and hardware diagnostics</li>
+          <li>Delivered database instruction and technical training</li>
+          <li>Performed hardware diagnostics and maintenance</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">Freelance</div>
+        <h3>Freelance Software Engineer</h3>
+        <div class="company">Independent / Client Projects</div>
+        <ul>
+          <li>Developed custom, secure software solutions using Laravel</li>
+          <li>Built the Drugstore Management System for Ananiya Drug Store</li>
+          <li>Extended to the affiliated medium clinic system</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="alt">
+  <div class="container fade-in">
+    <div class="section-label">Featured Projects</div>
+    <h2 class="section-title">Things I've built</h2>
+
+    <div class="projects-grid">
+
+      <div class="project-card">
+        <img src="image/p/login.png" alt="Drugstore Management System" loading="lazy" />
         <div class="body">
           <h3>Drugstore Management System</h3>
-          <p>A comprehensive inventory and sales management solution developed for Annaiya Pharmacy. Features include real-time stock tracking, sales reporting, supplier management, and automated low-stock alerts.</p>
-          <p><strong>Key Features:</strong> User authentication, inventory tracking, sales reporting, supplier management, automated alerts</p>
-          <div class="actions">
+          <p>Comprehensive inventory and sales management solution built with Laravel for Ananiya Drug Store and its affiliated medium clinic.</p>
+          <div class="tags">
+            <span class="tag">Laravel</span>
             <span class="tag">PHP</span>
             <span class="tag">MySQL</span>
-            <span class="tag">JavaScript</span>
-            <span class="tag">Bootstrap</span>
-            <div class="project-links">
-              <button class="btn ghost view" data-title="Drugstore Management System" data-desc="A comprehensive inventory and sales management solution with real-time stock tracking, sales reporting, and supplier management." data-images='["image/p/login.png","image/p/2.png","image/p/3.png","image/p/4.png","image/p/5.png","image/p/6.png","image/p/7.png","image/p/8.png","image/p/9.png","image/p/10.png","image/p/11.png","image/p/12.png","image/p/13.png","image/p/14.png","image/p/15.png","image/p/16.png","image/p/17.png","image/p/18.png","image/p/19.png","image/p/20.png","image/p/21.png","image/p/22.png","image/p/23.png"]'>View Details</button>
-            </div>
           </div>
-          <div class="demo-buttons">
-            <a href="https://ananiyadrugstore.com" class="demo-btn live">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 16.5v-9l6 4.5-6 4.5z"/>
-              </svg>
-              Live Demo
-            </a>
-            <a href="https://github.com/akremmohamed/academic-assignment-helper" class="demo-btn">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/>
-              </svg>
-              Source Code
-            </a>
+          <div class="project-actions">
+            <button class="btn-small view"
+              data-title="Drugstore Management System — Ananiya Pharmacy"
+              data-desc="A comprehensive inventory and sales management solution built with Laravel. Includes analytics dashboard, Telegram bot reporting, backup/restore, and automated low-stock alerts."
+              data-images='["image/p/login.png","image/p/2.png","image/p/3.png","image/p/4.png","image/p/5.png","image/p/6.png","image/p/7.png","image/p/8.png","image/p/9.png","image/p/10.png","image/p/11.png","image/p/12.png","image/p/13.png","image/p/14.png","image/p/15.png","image/p/16.png","image/p/17.png","image/p/18.png","image/p/19.png","image/p/20.png","image/p/21.png","image/p/22.png","image/p/23.png"]'>
+              View Details
+            </button>
           </div>
         </div>
-      </article>
+      </div>
 
-      <article class="project">
-        <img src="image/A.png" alt="Local Job Portal dashboard" loading="lazy" decoding="async"/>
+      <div class="project-card">
+        <img src="image/A.png" alt="Local Job Portal" loading="lazy" />
         <div class="body">
-          <h3>Local Job Portal</h3>
-          <p>A full-stack web application connecting local job seekers with employers. The platform includes user registration, job posting, application tracking, and search functionality tailored to the Ethiopian job market.</p>
-          <p><strong>Key Features:</strong> User roles (job seeker/employer), job posting, application system, search & filters, responsive design</p>
-          <div class="actions">
+          <h3>Local Job Portal — Ethio-Local Jobs</h3>
+          <p>Full-stack web app connecting local job seekers with employers. Freelance project for Natnael's graduation, featuring bilingual (Amharic/English) support.</p>
+          <div class="tags">
             <span class="tag">PHP</span>
             <span class="tag">MySQL</span>
-            <span class="tag">JavaScript</span>
             <span class="tag">Full-stack</span>
-            <div class="project-links">
-              <button class="btn ghost view" data-title="Local Job Portal" data-desc="A full-stack web application connecting local job seekers with employers, featuring user registration, job posting, and application tracking." data-images='["image/A.png","image/E.png","image/e1.png","image/e2.png","image/1.png","image/2.png","image/3.png","image/c.png","image/c1.png"]'>View Details</button>
-            </div>
           </div>
-          <div class="demo-buttons">
-            <a href="#" class="demo-btn live">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 16.5v-9l6 4.5-6 4.5z"/>
-              </svg>
-              Live Demo
-            </a>
-            <a href="#" class="demo-btn">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/>
-              </svg>
-              Source Code
-            </a>
+          <div class="project-actions">
+            <button class="btn-small view"
+              data-title="Local Job Portal — Ethio-Local Jobs"
+              data-desc="A full-stack web application connecting local job seekers with employers, featuring user roles, job posting, applications, and bilingual (Amharic/English) support."
+              data-images='["image/A.png","image/E.png","image/e1.png","image/e2.png","image/1.png","image/2.png","image/3.png","image/c.png","image/c1.png"]'>
+              View Details
+            </button>
           </div>
         </div>
-      </article>
+      </div>
 
-      <article class="project">
-        <img src="image/school.PNG" alt="Student Management System interface" loading="lazy" decoding="async"/>
+      <div class="project-card">
+        <img src="image/school.PNG" alt="Akesta Higher Education" loading="lazy" />
         <div class="body">
           <h3>Student Management & Grading System</h3>
-          <p>Developed for Akesta Secondary School to streamline student records and academic performance tracking. The system manages student information, course registration, grade entry, and report generation.</p>
-          <p><strong>Key Features:</strong> Student records management, grade tracking, report generation, administrative dashboard</p>
-          <div class="actions">
+          <p>Built for Akesta Secondary School to streamline student records, course registration, grade entry, and report generation.</p>
+          <div class="tags">
             <span class="tag">PHP</span>
             <span class="tag">MySQL</span>
             <span class="tag">Bootstrap</span>
-            <span class="tag">Education</span>
-            <div class="project-links">
-              <button class="btn ghost view" data-title="Student Management & Grading System" data-desc="A system for managing student records, course registration, grade entry, and report generation for educational institutions." data-images='["image/school.PNG"]'>View Details</button>
-            </div>
           </div>
-          <div class="demo-buttons">
-            <a href="#" class="demo-btn live">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 16.5v-9l6 4.5-6 4.5z"/>
-              </svg>
-              Live Demo
-            </a>
-            <a href="#" class="demo-btn">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/>
-              </svg>
-              Source Code
-            </a>
+          <div class="project-actions">
+            <button class="btn-small view"
+              data-title="Student Management & Grading System"
+              data-desc="A system for managing student records, course registration, grade entry, and report generation for Akesta Secondary School."
+              data-images='["image/school.PNG"]'>
+              View Details
+            </button>
           </div>
         </div>
-      </article>
+      </div>
 
-      <article class="project">
-        <img src="image/attention.png" alt="Travel Guide Application interface" loading="lazy" decoding="async"/>
+      <div class="project-card">
+        <img src="image/attention.png" alt="Travel Guide Application" loading="lazy" />
         <div class="body">
           <h3>Travel Guide Application</h3>
-          <p>A mobile-first application showcasing local tourism destinations in Ethiopia. The app provides information on attractions, travel tips, and interactive maps to enhance the tourism experience for both domestic and international visitors.</p>
-          <p><strong>Key Features:</strong> Mobile-first design, location-based content, interactive maps, tourism information</p>
-          <div class="actions">
+          <p>Mobile-first application showcasing local Ethiopian tourism destinations with attractions, travel tips, and interactive maps.</p>
+          <div class="tags">
             <span class="tag">React</span>
             <span class="tag">Node.js</span>
             <span class="tag">MongoDB</span>
-            <span class="tag">Mobile</span>
-            <div class="project-links">
-              <button class="btn ghost view" data-title="Travel Guide Application" data-desc="A mobile-first application showcasing local tourism destinations with information on attractions, travel tips, and interactive maps." data-images='["image/attention.png"]'>View Details</button>
-            </div>
           </div>
-          <div class="demo-buttons">
-            <a href="#" class="demo-btn live">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 16.5v-9l6 4.5-6 4.5z"/>
-              </svg>
-              Live Demo
-            </a>
-            <a href="#" class="demo-btn">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/>
-              </svg>
-              Source Code
-            </a>
+          <div class="project-actions">
+            <button class="btn-small view"
+              data-title="Travel Guide Application"
+              data-desc="A mobile-first application showcasing local tourism destinations with information on attractions, travel tips, and interactive maps."
+              data-images='["image/attention.png"]'>
+              View Details
+            </button>
           </div>
         </div>
-      </article>
-    </div>
-  </section>
+      </div>
 
-  <!-- Experience -->
-  <section id="experience" class="section container">
-    <h2>Professional Experience</h2>
-    <div class="timeline">
-      <div class="timeline-item card">
-        <div class="time">2023</div>
-        <div class="info">
-          <h4>IT Intern — Wollo University Data Center</h4>
-          <p>Assisted with server setup, maintenance, troubleshooting, and networking tasks. Gained hands-on experience with enterprise IT infrastructure and support systems.</p>
-          <ul>
-            <li>Participated in server deployment and configuration</li>
-            <li>Assisted with network troubleshooting and maintenance</li>
-            <li>Provided technical support to university staff and students</li>
-          </ul>
-        </div>
-      </div>
-      <div class="timeline-item card">
-        <div class="time">2023</div>
-        <div class="info">
-          <h4>Software Development Trainee — Wollo University App Factory</h4>
-          <p>Built small applications, contributed to team projects, and participated in code reviews. Developed practical skills in software development methodologies and collaboration.</p>
-          <ul>
-            <li>Developed small applications using modern web technologies</li>
-            <li>Participated in team code reviews and collaborative development</li>
-            <li>Gained experience with agile development practices</li>
-          </ul>
-        </div>
-      </div>
-      <div class="timeline-item card">
-        <div class="time">2023</div>
-        <div class="info">
-          <h4>Team Trainee — Ambo University Data Center</h4>
-          <p>Worked on IT infrastructure, deployments, and user support. Enhanced technical skills in system administration and user assistance.</p>
-          <ul>
-            <li>Assisted with IT infrastructure maintenance and deployments</li>
-            <li>Provided user support and troubleshooting assistance</li>
-            <li>Participated in system monitoring and maintenance tasks</li>
-          </ul>
-        </div>
-      </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Education -->
-  <section id="education" class="section container">
-    <h2>Education & Certificates</h2>
-    <div class="education-timeline">
-      <div class="education-item">
-        <div class="education-icon">BSc</div>
-        <div class="education-content">
+<!-- EDUCATION -->
+<section id="education">
+  <div class="container fade-in">
+    <div class="section-label">Education</div>
+    <h2 class="section-title">Academic background</h2>
+
+    <div class="edu-list">
+      <div class="edu-card">
+        <div class="edu-icon">BSc</div>
+        <div>
           <h3>BSc. Information Technology</h3>
-          <p class="muted">Ambo University (2019–2024)</p>
-          <p>Comprehensive study of information systems, software development, database management, and networking. Graduated with a strong foundation in both theoretical concepts and practical applications.</p>
-          <p><strong>Key Courses:</strong> Web Development, Database Systems, Software Engineering, Network Administration, Mobile Application Development</p>
+          <div class="school">Ambo University — 2019–2024</div>
+          <p>Comprehensive study of information systems, software development, database management, and networking.</p>
+          <p style="margin-top:0.5rem"><strong style="color:var(--text)">CGPA:</strong> 2.97 / 4.00 &nbsp;•&nbsp; <strong style="color:var(--text)">Exit Exam:</strong> 62.0 / 100</p>
         </div>
       </div>
-      
-      <div class="education-item">
-        <div class="education-icon">HS</div>
-        <div class="education-content">
+
+      <div class="edu-card">
+        <div class="edu-icon">HS</div>
+        <div>
           <h3>Akesta Higher Education Preparatory School</h3>
-          <p class="muted">(2016–2019)</p>
+          <div class="school">2016–2019</div>
           <p>Completed preparatory education with focus on natural sciences, laying the foundation for university studies in technology and computer science.</p>
         </div>
       </div>
-      
-      <div class="education-item">
-        <div class="education-icon">PS</div>
-        <div class="education-content">
-          <h3>Bruhtesfa Primary School</h3>
-          <p class="muted">(2008–2016)</p>
-          <p>Completed primary education with distinction in mathematics and science subjects.</p>
-        </div>
-      </div>
-      
-      <div class="education-item">
-        <div class="education-icon">C</div>
-        <div class="education-content">
-          <h3>Certificates & Awards</h3>
-          <ul>
-            <li>Ambo University Peace Forum (2021–2023) — recognized for service and leadership in campus community initiatives</li>
-            <li>People for People Association — volunteer & community projects focused on technology education for youth</li>
-            <li>University Programming Competition Participant (2022) — competed in regional coding challenges</li>
-          </ul>
-        </div>
+    </div>
+
+    <div style="margin-top:2rem">
+      <div class="section-label">Languages & Hobbies</div>
+      <div class="chips">
+        <span class="chip">Amharic — Native</span>
+        <span class="chip">English — Proficient</span>
+        <span class="chip">📚 Reading</span>
+        <span class="chip">🕌 Mosque Activities</span>
+        <span class="chip">💻 Coding</span>
       </div>
     </div>
-  </section>
-
-  <!-- Contact -->
-  <section id="contact" class="section container">
-    <h2>Contact</h2>
-    <div class="contact-grid">
-      <div class="card">
-        <h3>Get in touch</h3>
-        <p class="muted">Open to full‑time roles, internships, and freelance projects. I reply quickly to all inquiries.</p>
-        <div class="contact-list">
-          <a href="https://t.me/clicktechs" target="_blank" rel="noopener">
-            <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M9.04 15.04 8.71 19s.61.12.75-.32l1.8-3.52 4.18 3.1c.77.43 1.33.21 1.53-.71l2.77-13.01c.25-1.21-.46-1.69-1.21-1.39L2.7 9.77c-1.18.46-1.16 1.13-.2 1.41l4.9 1.53 11.37-7.18c.54-.33 1.03-.15.62.2z"/></svg>
-            Telegram: @clicktechs
-          </a>
-          <a href="mailto:Akremmohamed1993@gmail.com">
-            <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
-            Akremmohamed1993@gmail.com
-          </a>
-          <a href="tel:0917578903">
-            <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.05 15.05 0 006.6 6.6l2.2-2.2c.3-.3.7-.4 1.1-.3 1.2.4 2.6.6 4 .6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C11.8 21 3 12.2 3 2c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.4.2 2.8.6 4 .1.4 0 .8-.3 1.1l-2.2 2.2z"/></svg>
-            09‑17‑57‑89‑03
-          </a>
-          <a href="https://www.linkedin.com/in/awel-mohamed" target="_blank" rel="noopener">
-            <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.94 6.5A1.94 1.94 0 105 4.56 1.94 1.94 0 006.94 6.5zM5.5 20.5h3v-10h-3v10zM13 10.5v10h3v-5.86c0-3.1 4-3.35 4 0V20.5h3v-6.59c0-5.45-5.89-5.25-7-2.57v-1.34h-3z"/></svg>
-            LinkedIn: awel-mohamed
-          </a>
-        </div>
-        
-        <div class="contact-map">
-          <p>📍 Addis Ababa, Ethiopia</p>
-        </div>
-      </div>
-      
-      <form class="card contact-form" id="contactForm" onsubmit="handleFormSubmit(event)">
-        <label><span>Your name</span><input name="name" type="text" required placeholder="Your name" autocomplete="name"/></label>
-        <label><span>Your email</span><input name="email" type="email" required placeholder="you@example.com" autocomplete="email"/></label>
-        <label><span>Subject</span><input name="subject" type="text" required placeholder="Project inquiry or job opportunity"/></label>
-        <label><span>Message</span><textarea name="message" rows="5" required placeholder="Tell me about your project or opportunity..."></textarea></label>
-        <div class="form-actions">
-          <button class="btn primary" type="submit">Send message</button>
-          <a class="btn ghost" href="development Cv.pdf" download target="_blank" rel="noopener">Download CV</a>
-        </div>
-      </form>
-    </div>
-  </section>
-
-  <footer class="section site-footer">
-    <div class="container">
-      <small>&copy; 2025 Awel Mohamed Oumer — Built with ♥︎ • 
-        <a href="development Cv.pdf" download>Download CV</a> • 
-        <a href="https://t.me/clicktechs" target="_blank" rel="noopener">Telegram</a> • 
-        <a href="mailto:Akremmohamed1993@gmail.com">Email</a>
-      </small>
-    </div>
-  </footer>
-
-  <!-- Quick Bar -->
-  <div class="quick-bar" aria-hidden="false">
-    <a href="https://t.me/clicktechs" target="_blank" rel="noopener" title="Telegram" aria-label="Telegram">TG</a>
-    <a href="mailto:Akremmohamed1993@gmail.com" title="Email" aria-label="Email">@</a>
-    <a href="tel:0917578903" title="Phone" aria-label="Phone">☎</a>
-    <a href="#home" title="Back to top" aria-label="Back to top">↑</a>
   </div>
+</section>
 
-  <!-- Lightweight JS (defer) -->
-  <script defer>
-    // Nav toggle
-    const navToggle=document.getElementById('navToggle');
-    const navLinks=document.getElementById('navLinks');
-    if(navToggle){navToggle.addEventListener('click',()=>{const open=navLinks.classList.toggle('open');navToggle.setAttribute('aria-expanded',open)})}
+<!-- CONTACT -->
+<section id="contact" class="alt">
+  <div class="container fade-in">
+    <div class="section-label">Contact</div>
+    <h2 class="section-title">Let's connect</h2>
 
-    // Modal Gallery (accessible, tiny)
-    const makeEl=(tag,cls)=>{const el=document.createElement(tag);if(cls)el.className=cls;return el};
-    const closeOnOutside=(overlay,box)=>overlay.addEventListener('click',e=>{if(!box.contains(e.target))overlay.remove()});
-    const views=document.querySelectorAll('.view');
-    views.forEach(btn=>btn.addEventListener('click',()=>{
-      const title=btn.dataset.title||'Project';
-      const desc=btn.dataset.desc||'';
-      const images=JSON.parse(btn.dataset.images||'[]');
-      let i=0;
-      const overlay=makeEl('div','overlay');
-      const modal=makeEl('div','modal');
-      const row=makeEl('div','row');
-      const h=makeEl('h3');h.textContent=title;
-      const nav=makeEl('div','nav');
-      const prev=makeEl('button','btn ghost');prev.textContent='◀ Prev';
-      const next=makeEl('button','btn ghost');next.textContent='Next ▶';
-      const close=makeEl('button','btn');close.textContent='✕ Close';
-      const img=makeEl('img');img.loading='eager';img.decoding='async';
-      const p=makeEl('p');p.textContent=desc;
-      row.append(h,nav,close);nav.append(prev,next);modal.append(row,img,p);overlay.append(modal);document.body.append(overlay);
-      const render=()=>{img.src=images[i];img.alt=`${title} — image ${i+1}/${images.length}`;prev.disabled=i===0;next.disabled=i===images.length-1};
+    <div class="contact-grid">
+      <a href="mailto:Akremmohamed1993@gmail.com" class="contact-card">
+        <div class="contact-icon">✉️</div>
+        <div>
+          <div class="label">Email</div>
+          <div class="value">Akremmohamed1993@gmail.com</div>
+        </div>
+      </a>
+
+      <a href="tel:0917578903" class="contact-card">
+        <div class="contact-icon">📞</div>
+        <div>
+          <div class="label">Phone</div>
+          <div class="value">09-17-57-89-03</div>
+        </div>
+      </a>
+
+      <a href="tel:0963635404" class="contact-card">
+        <div class="contact-icon">📞</div>
+        <div>
+          <div class="label">Alt Phone</div>
+          <div class="value">09-63-63-54-04</div>
+        </div>
+      </a>
+
+      <a href="https://t.me/clicktechs" target="_blank" rel="noopener" class="contact-card">
+        <div class="contact-icon">💬</div>
+        <div>
+          <div class="label">Telegram</div>
+          <div class="value">@clicktechs</div>
+        </div>
+      </a>
+
+      <div class="contact-card">
+        <div class="contact-icon">📍</div>
+        <div>
+          <div class="label">Location</div>
+          <div class="value">Addis Ababa, Ethiopia</div>
+        </div>
+      </div>
+
+      <a href="https://akremmohamed.github.io/awel/" target="_blank" rel="noopener" class="contact-card">
+        <div class="contact-icon">🌐</div>
+        <div>
+          <div class="label">Portfolio</div>
+          <div class="value">akremmohamed.github.io/awel</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>© <span id="year"></span> Abol Mohamed Oumer. Built with <span class="heart">♥</span> in Addis Ababa.</p>
+  </div>
+</footer>
+
+<script>
+  // Year
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Mobile menu
+  const menuToggle = document.getElementById('menuToggle');
+  const navLinks = document.getElementById('navLinks');
+  menuToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => navLinks.classList.remove('open'));
+  });
+
+  // Fade-in on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Gallery modal
+  document.querySelectorAll('.view').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const title = btn.dataset.title || 'Project';
+      const desc = btn.dataset.desc || '';
+      const images = JSON.parse(btn.dataset.images || '[]');
+      let i = 0;
+
+      const overlay = document.createElement('div');
+      overlay.className = 'gallery-overlay';
+
+      const modal = document.createElement('div');
+      modal.className = 'gallery-modal';
+
+      const header = document.createElement('div');
+      header.className = 'gallery-header';
+
+      const h3 = document.createElement('h3');
+      h3.textContent = title;
+
+      const navDiv = document.createElement('div');
+      navDiv.className = 'gallery-nav';
+
+      const prev = document.createElement('button');
+      prev.className = 'btn-small';
+      prev.textContent = '◀ Prev';
+
+      const next = document.createElement('button');
+      next.className = 'btn-small';
+      next.textContent = 'Next ▶';
+
+      const close = document.createElement('button');
+      close.className = 'btn-small primary';
+      close.textContent = '✕ Close';
+
+      navDiv.append(prev, next, close);
+      header.append(h3, navDiv);
+
+      const img = document.createElement('img');
+      img.loading = 'eager';
+
+      const p = document.createElement('p');
+      p.textContent = desc;
+
+      modal.append(header, img, p);
+      overlay.append(modal);
+      document.body.appendChild(overlay);
+
+      const render = () => {
+        img.src = images[i];
+        img.alt = `${title} — image ${i + 1}/${images.length}`;
+        prev.disabled = i === 0;
+        next.disabled = i === images.length - 1;
+      };
       render();
-      prev.onclick=()=>{if(i>0){i--;render()}};next.onclick=()=>{if(i<images.length-1){i++;render()}};close.onclick=()=>overlay.remove();
-      document.addEventListener('keydown',function onKey(e){if(e.key==='Escape'){overlay.remove();document.removeEventListener('keydown',onKey)}else if(e.key==='ArrowLeft'&&i>0){i--;render()}else if(e.key==='ArrowRight'&&i<images.length-1){i++;render()}});
-      closeOnOutside(overlay,modal);
-    }));
 
-    // Contact form handler
-    function handleFormSubmit(event) {
-      event.preventDefault();
-      const form = event.target;
-      const formData = new FormData(form);
-      const data = Object.fromEntries(formData);
-      
-      // In a real implementation, you would send this data to a server
-      // For now, we'll just show a success message
-      alert(`Thank you for your message, ${data.name}! I'll get back to you soon at ${data.email}.`);
-      form.reset();
-      
-      // Optional: Log the form data (remove in production)
-      console.log('Form submission:', data);
-    }
+      prev.onclick = () => { if (i > 0) { i--; render(); } };
+      next.onclick = () => { if (i < images.length - 1) { i++; render(); } };
+      close.onclick = () => overlay.remove();
 
-    // Tiny fade‑in on scroll using IntersectionObserver (no library)
-    const io=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.style.transition='opacity .5s ease, transform .5s ease';e.target.style.opacity=1;e.target.style.transform='none';io.unobserve(e.target)}})},{threshold:.08});
-    document.querySelectorAll('.card,.project,.skill-category,.timeline-item,.education-item').forEach(el=>{el.style.opacity=.001;el.style.transform='translateY(8px)';io.observe(el)});
-  </script>
+      overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) overlay.remove();
+      });
 
-  <!-- Schema.org -->
-  <script type="application/ld+json">{
-    "@context":"https://schema.org",
-    "@type":"Person",
-    "name":"Awel Mohamed Oumer",
-    "jobTitle":"Web & App Developer",
-    "image":"image/Abol Mohammed.jpg",
-    "address":{
-      "@type":"PostalAddress",
-      "addressLocality":"Addis Ababa",
-      "addressCountry":"Ethiopia"
-    },
-    "email":"mailto:Akremmohamed1993@gmail.com",
-    "url":"",
-    "sameAs":[
-      "https://t.me/clicktechs",
-      "https://www.linkedin.com/in/awel-mohamed"
-    ]
-  }
-  </script>
+      document.addEventListener('keydown', function onKey(e) {
+        if (e.key === 'Escape') {
+          overlay.remove();
+          document.removeEventListener('keydown', onKey);
+        } else if (e.key === 'ArrowLeft' && i > 0) { i--; render(); }
+        else if (e.key === 'ArrowRight' && i < images.length - 1) { i++; render(); }
+      });
+    });
+  });
+</script>
+
 </body>
 </html>
-
-
-
